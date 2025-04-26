@@ -69,7 +69,7 @@ app.get('/books', async (req, res) => {
 
 app.get('/:id', async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id;
     const book = await Book.findById(id).populate('reviews');
 
     if (!book) {
