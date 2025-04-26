@@ -69,7 +69,8 @@ app.get('/books', async (req, res) => {
 
 app.get('/:id', async (req, res) => {
   try {
-    const book = await Book.findById(req.params.id).populate('reviews');
+    const { id } = req.params;
+    const book = await Book.findById(id).populate('reviews');
 
     if (!book) {
       return res.status(404).json({ error: 'Book not found' });
